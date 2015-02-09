@@ -425,6 +425,21 @@ protected:
                             reply.addVocab(ack);
                         }
                     }
+                    else if (tag==Vocab::encode("get"))
+                    {
+                        reply.addVocab(ack);
+                        reply.addString(pushHand.c_str());
+                        reply.addDouble(toolFrame(0,3));
+                        reply.addDouble(toolFrame(1,3));
+                        reply.addDouble(toolFrame(2,3));
+                    }
+                    else if (tag==Vocab::encode("remove"))
+                    {
+                        pushHand="selectable";
+                        toolFrame=eye(4,4);
+
+                        reply.addVocab(ack);
+                    }
                 }
 
                 break;
